@@ -1,0 +1,34 @@
+@use '../scss/variables' as *;
+@use '../scss/mixins' as *;
+
+.header {
+  position: relative;
+  @include disFlex(row, space-between, center);
+  padding: 1.5rem rem(56);
+
+  @include large-device-down {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1.5rem;
+  }
+
+  &::after {
+    content: "";
+    border-top: solid 1px $color-gray;
+    position: absolute;
+    width: calc(100% - rem(56));
+    height: 1px;
+    bottom: 0;
+    left: 50%;
+    translate: -50% 0;
+  }
+
+  &__title {
+    @extend %theme__title;
+  }
+
+  &__date {
+    @extend %theme__text--gray;
+  }
+}

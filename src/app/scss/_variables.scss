@@ -1,0 +1,50 @@
+@use 'mixins' as *;
+
+$font-primary: "Inter Tight", sans-serif;
+
+
+// COLORS
+$color-blue: #0796D3;
+$color-red: #D30707;
+$color-gray: #E7EEFB;
+
+$color-white: #fff;
+$color-black: #000;
+
+// GRADIENTS
+$gradient-blue: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
+$gradient-red: linear-gradient(90deg, #D30707 0%, #F05353 68.65%);
+
+// FONTS
+$T1: 500 1.5rem $font-primary;
+$P1: 400 1rem $font-primary;
+
+%theme {
+  &__title {
+    font: $T1;
+    letter-spacing: -0.48px;
+    color: $color-black;
+
+    @include large-device-down {
+      font-size: 1rem;
+    }
+  }
+
+  &__text {
+    font: $P1;
+    letter-spacing: -0.32px;
+    color: $color-black;
+
+    &--gray {
+      @extend %theme__text;
+      color: rgba(0, 0, 0, 0.54);
+    }
+
+    &--white {
+      @extend %theme__text;
+      font-weight: 500;
+      color: $color-white;
+    }
+
+  }
+}

@@ -1,0 +1,32 @@
+@use '../scss/variables' as *;
+@use '../scss/mixins' as *;
+
+.todos {
+  max-width: 31.25%;
+  margin: 2.5rem auto 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid $color-gray;
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  padding: 2rem;
+
+  @include large-device-down {
+    max-width: 85%;
+  }
+
+
+  &__list {
+    list-style: none;
+    @include disFlex(column, center, flex-start);
+    gap: 1.5rem;
+
+    &__title {
+      @extend %theme__text--gray;
+      width: 100%;
+      text-align: center;
+    }
+
+    &+& {
+      margin-top: 1.5rem;
+    }
+  }
+}

@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  ::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+    background: rgba(#606060, 0.5);
+
+    &-thumb {
+      background: rgba(#606060, 0.8);
+
+      &:hover {
+        background: #4d4d4d;
+      }
+    }
+  }
+
+  [hidden] {
+    display: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+
+  &:focus-within {
+    scroll-behavior: smooth;
+  }
+}
+
+
+
+body {
+  width: 100dvw;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  position: relative;
+
+  &>main {
+    flex: 1 0 auto;
+  }
+}
+
+
+a,
+button {
+  cursor: pointer;
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+input,
+select,
+textarea {
+  outline: 0;
+  box-shadow: none;
+}
