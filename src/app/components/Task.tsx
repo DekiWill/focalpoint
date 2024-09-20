@@ -26,14 +26,14 @@ export function Task({ task, id, completed = false, onDelete }: TaskProps) {
     handleClose();
   };
   return (
-    <li className={styles.task}>
+    <li id={id} className={styles.task}>
       <input
         id={`checkbox-${id}`}
         className={styles.task__checkbox}
         type="checkbox"
         name="task"
       />
-      <label id={id} className={styles.task__title} htmlFor={`checkbox-${id}`}>
+      <label className={styles.task__title} htmlFor={`checkbox-${id}`}>
         {task}
       </label>
       <button onClick={handleOpen}>
