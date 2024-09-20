@@ -6,12 +6,15 @@
   &__trigger {
 
     width: 31.25%;
-    @include disFlex(row, center, center);
-    padding: 1rem;
     margin: 1.5rem auto 0;
+    padding: 1rem;
+
+    @include disFlex(row, center, center);
+
+    border-radius: 0.5rem;
+
     background: $gradient-blue;
     @extend %theme__text--white;
-    border-radius: 0.5rem;
 
     @include large-device-down {
       width: 85%;
@@ -19,16 +22,18 @@
   }
 
   &__container {
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0px 24px 48px -12px rgba($color-black, 0.50);
-    border: none;
     width: 100%;
     max-width: rem(450);
+    padding: 2rem;
+
+    border: none;
+    border-radius: 1rem;
 
     top: 50%;
     left: 50%;
     translate: -50% -50%;
+
+    box-shadow: 0px 24px 48px -12px rgba($color-black, 0.50);
 
     @include large-device-down {
       padding: 1.5rem;
@@ -49,16 +54,18 @@
 
       &::before {
         content: '';
+
         width: 100vw;
         height: 100vh;
-        background-color: rgba($color-white, 0.8);
+
         position: fixed;
         z-index: -1;
         top: 50%;
         left: 50%;
         translate: -50% -50%;
-      }
 
+        background-color: rgba($color-white, 0.8);
+      }
     }
 
     @include large-device-down {
@@ -81,10 +88,7 @@
         gap: 1rem;
       }
 
-
-
       &__label {
-
         @include disFlex(column, flex-start, flex-start);
         gap: 0.5rem;
         width: 100%;

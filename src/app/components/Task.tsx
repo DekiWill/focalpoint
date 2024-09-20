@@ -43,11 +43,17 @@ export function Task({ task, id, completed = false, onDelete }: TaskProps) {
           alt="lixeira"
         />
       </button>
-      <dialog open={open}>
-        <h2>Deletar tarefa</h2>
-        <p>Deseja realmente deletar a tarefa?</p>
-        <button onClick={handleClose}>Cancelar</button>
-        <button onClick={handleDelete}>Deletar</button>
+      <dialog className={styles.task__dialog} open={open}>
+        <h2 className={styles.task__dialog__title}>Deletar tarefa</h2>
+        <p className={styles.task__dialog__description}>
+          Deseja realmente deletar a tarefa?
+        </p>
+        <button className={styles.task__dialog__cancel} onClick={handleClose}>
+          Cancelar
+        </button>
+        <button className={styles.task__dialog__delete} onClick={handleDelete}>
+          Deletar
+        </button>
       </dialog>
     </li>
   );
