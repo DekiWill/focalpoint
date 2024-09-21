@@ -1,8 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Sobre
 
-## Getting Started
+Projeto realizado com o Next.js em sua versão 14, como teste de um processo seletivo a uma vaga de júnior com foco na UI
 
-First, run the development server:
+## Instalação
+
+1 - Realizar a instação do projeto com os seguintes comandos
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+2 - Rodar o servidor de desenvolvimento com os seguintes comandos:
 
 ```bash
 npm run dev
@@ -14,23 +28,41 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3 - Abrir o link disponibilizado no terminal, usualmente é disponibilizado no link a seguir: https://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Apresentação do Projeto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Arquitetura
 
-## Learn More
+- focalpoint/
+  - prisma/
+  - public/
+  - src/
+  - app
+  - lib
 
-To learn more about Next.js, take a look at the following resources:
+Na pasta prisma é possivel encontrar nosso banco de dados e o schema dele.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Em public, foram inseridos os assets (icone e imagem)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Na pasta src é onde está o core da aplicação: os componentes, os estilos e as actions.
 
-## Deploy on Vercel
+### Estilos
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- focalpoint/
+  - src/
+    - sscs
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Dentro da pasta scss é estão os arquivos de resets, mixins, variáveis e tipografia utilizados no projeto.
+
+Para além de ter se utilizado o scss como pre-processador de css, foi utilizado dentro do projeto a metodologia BEM.
+
+### Componentes
+
+Dentro da aplicação foi escolhido trabalhar com um db e com o ORM prisma, pois, dentro do Next.js é possível definir server-actions para realização de busca de informações. Dessa forma, aumenta a performance da aplicação uma vez que a busca está sendo realizada no server-side. Ao invés de trabalarmos com o localStorage, onde todos os componentes estariam no lado do cliente.
+
+Para atualizar a lista, ao invés de ser utilizado o useEffect e passar uma variável para estar sendo observada, foi preferível utilizar o revalidadePath, uma função do Next.js para garantir que os dados da rota sejam atualizados dinamicamente.
+
+### Actions
+
+Um ponto que vale ser ressaltado é que há um arquivo chamado <b>actions.ts<b/> onde nele são definidas as funções de GET, CREATE, DELETE e UPDATE. Todas as funcões possuem o revalidadePath, por motivos já explicados anteriormente.
