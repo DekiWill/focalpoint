@@ -49,10 +49,6 @@ Na pasta src é onde está o core da aplicação: os componentes, os estilos e a
 
 ### Estilos
 
-- focalpoint/
-  - src/
-    - sscs
-
 Dentro da pasta scss é estão os arquivos de resets, mixins, variáveis e tipografia utilizados no projeto.
 
 Para além de ter se utilizado o scss como pre-processador de css, foi utilizado dentro do projeto a metodologia BEM.
