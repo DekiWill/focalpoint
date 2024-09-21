@@ -51,14 +51,17 @@ Na pasta src é onde está o core da aplicação: os componentes, os estilos e a
 
 Dentro da pasta scss é estão os arquivos de resets, mixins, variáveis e tipografia utilizados no projeto.
 
+Trouxe os mixins para facilitar e agilizar o processo de estilização dos componentes e dentro do arquivo variables.scss foi criado um tema onde as informações do design system podem ser inseridas e refletidas diretamente em todo o projeto.
+
 Para além de ter se utilizado o scss como pre-processador de css, foi utilizado dentro do projeto a metodologia BEM.
 
 ### Componentes
 
-Dentro da aplicação foi escolhido trabalhar com um db e com o ORM prisma, pois, dentro do Next.js é possível definir server-actions para realização de busca de informações. Dessa forma, aumenta a performance da aplicação uma vez que a busca está sendo realizada no server-side. Ao invés de trabalarmos com o localStorage, onde todos os componentes estariam no lado do cliente.
+Dentro da aplicação escolhi trabalhar com um db e com o ORM prisma, pois, dentro do Next.js é possível definir server-actions para realização de busca de informações. Dessa forma, aumentamos a performance da aplicação uma vez que a busca está sendo realizada no server-side. Ao invés de trabalharmos com o localStorage, onde todos os componentes estariam no lado do cliente.
 
-Para atualizar a lista, ao invés de ser utilizado o useEffect e passar uma variável para estar sendo observada, foi preferível utilizar o revalidadePath, uma função do Next.js para garantir que os dados da rota sejam atualizados dinamicamente.
+Para atualizar a lista, ao invés de ser utilizado o useEffect e passar uma variável para estar sendo observada, preferi utilizar o revalidadePath, uma função do Next.js para garantir que os dados da rota sejam atualizados dinamicamente.
 
 ### Actions
 
-Um ponto que vale ser ressaltado é que há um arquivo chamado <b>actions.ts<b/> onde nele são definidas as funções de GET, CREATE, DELETE e UPDATE. Todas as funcões possuem o revalidadePath, por motivos já explicados anteriormente.
+Um ponto que vale ser ressaltado é que há um arquivo chamado <b>actions.ts<b/> onde nele são definidas as funções de GET, CREATE, DELETE e UPDATE. Esse arquivo roda no server-side através das server actions que o framerwork utiliza. Optei por trabalhar dessa forma, pois API handlers deveriam ser só utilizados caso fosse necessário utilizar WebHooks.
+Todas as funcões possuem o revalidadePath, por motivos já explicados anteriormente.
