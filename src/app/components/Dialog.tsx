@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "./dialog.module.scss";
+import { CREATE } from "../actions/actions";
 
 export default function Dialog() {
   const [open, setOpen] = useState(false);
@@ -13,6 +14,15 @@ export default function Dialog() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const [task, setTask] = useState("");
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    await CREATE(task);
+    setTask("");
+    handleClose();
+  };
   return (
     <>
       <button className={styles.dialog__trigger} onClick={handleOpen}>
@@ -20,13 +30,19 @@ export default function Dialog() {
       </button>
       <dialog className={styles.dialog__container} open={open}>
         <h2 className={styles.dialog__container__title}>Nova tarefa</h2>
-        <form className={styles.dialog__container__form} action="">
+        <form
+          className={styles.dialog__container__form}
+          onSubmit={handleSubmit}
+        >
           <label
             className={styles.dialog__container__form__label}
             htmlFor="task"
           >
             Titulo
             <input
+              required
+              value={task}
+              onChange={(e) => setTask(e.target.value)}
               className={styles.dialog__container__form__label__input}
               type="text"
               name="task"
@@ -39,10 +55,7 @@ export default function Dialog() {
           >
             Cancelar
           </button>
-          <button
-            className={styles.dialog__container__form__add}
-            onClick={handleClose}
-          >
+          <button className={styles.dialog__container__form__add} type="submit">
             Adicionar
           </button>
         </form>
