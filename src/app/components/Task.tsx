@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./task.module.scss";
+import { DELETE, UPDATE } from "../actions/actions";
 
 type TaskProps = {
   task: string;
@@ -9,8 +10,14 @@ type TaskProps = {
   onDelete?: (id: string) => void;
 };
 
-export function Task({ task, id, completed = false, onDelete }: TaskProps) {
+export function Task({
+  task,
+  id,
+  completed: inicialCompleted,
+  onDelete,
+}: TaskProps) {
   const [open, setOpen] = useState(false);
+  const [completed, setCompleted] = useState<boolean>(inicialCompleted);
 
   const handleOpen = () => {
     setOpen(true);
@@ -22,8 +29,17 @@ export function Task({ task, id, completed = false, onDelete }: TaskProps) {
 
   const handleDelete = () => {
     if (onDelete) onDelete(id);
-    console.log(id);
+    DELETE(id);
     handleClose();
+  };
+
+  const handleCheckboxUpdate = async (
+    ev: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    ev.preventDefault();
+    const newCompletedStatus = !completed;
+    setCompleted(newCompletedStatus);
+    await UPDATE(id, newCompletedStatus);
   };
   return (
     <li id={id} className={styles.task}>
@@ -32,6 +48,8 @@ export function Task({ task, id, completed = false, onDelete }: TaskProps) {
         className={styles.task__checkbox}
         type="checkbox"
         name="task"
+        onChange={handleCheckboxUpdate}
+        checked={completed}
       />
       <label className={styles.task__title} htmlFor={`checkbox-${id}`}>
         {task}

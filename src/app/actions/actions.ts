@@ -20,3 +20,21 @@ export async function todoList() {
 
   return todos;
 }
+
+export async function UPDATE(id: string, completed: boolean) {
+  await prisma.task.updateMany({
+    where: {
+      id: id,
+    },
+    data: {
+      completed: completed,
+    },
+  });
+}
+export async function DELETE(id: string) {
+  await prisma.task.deleteMany({
+    where: {
+      id: id,
+    },
+  });
+}
