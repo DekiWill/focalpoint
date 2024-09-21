@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./task.module.scss";
 import { DELETE, UPDATE } from "../actions/actions";
 
