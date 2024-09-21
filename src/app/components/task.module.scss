@@ -22,8 +22,9 @@
 
   &__title {
     @extend %theme__text;
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     cursor: pointer;
+
   }
 
   &__checkbox {
@@ -33,6 +34,7 @@
     cursor: pointer;
     border: solid 1px #B0BBD1;
     border-radius: 0.25rem;
+    flex-shrink: 0;
 
 
     &:checked {
